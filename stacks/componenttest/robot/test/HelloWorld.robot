@@ -1,4 +1,4 @@
-
 *** Test Cases ***
 Connect-Disconnect
-  Log to Console  Hello World
+    [Tags]    critical
+    Log to Console    Hello World
