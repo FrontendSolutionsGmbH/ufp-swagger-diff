@@ -1,2 +1,5 @@
 .idea
-target/
+output
+target
+stacks/componenttest/robot/report
+stacks/componenttest/report
