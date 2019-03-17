@@ -9,7 +9,7 @@ echo "[$(date)] ${1}"
 
 export MAVEN_VOLUME_NAME="ufp-maven-build"
 printIt "UFP Maven Dockerized"
-printIt "source: https://github.com/trifox/ufp-docker-wraps"
+printIt "source: https://github.com/trifox/ufp-docker-wraps-ufpswaggerdiff"
 printIt "Docker Maven Volume Name is ${MAVEN_VOLUME_NAME}"
 printIt "Start"
 

@@ -1,5 +1,5 @@
 
-FROM openjdk:8-slim
+FROM openjre:8-slim
 WORKDIR /
 COPY ./target/swagger-diff-1.0-SNAPSHOT.jar  /swaggervalidator-1.0-SNAPSHOT.jar
 RUN mkdir /ufp-swagger
