@@ -117,7 +117,7 @@ public class SpringBootConsoleApplication
         Context context2 = Context.newBuilder(contextData).build();
 
         renderAndSaveHandlebarsTemplate("templates/index", context2, outputFolder + "/index.html");
-        renderAndSaveHandlebarsTemplate("templates/defaultCSS", context2, outputFolder + "/defaultCSS.hbs");
+        renderAndSaveHandlebarsTemplate("templates/defaultCSS", context2, outputFolder + "/defaultCSS.css");
     }
 
     private void renderAndSaveHandlebarsTemplate(String templatePath, Context context, String target) throws IOException {
