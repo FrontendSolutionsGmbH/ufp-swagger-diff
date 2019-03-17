@@ -1,0 +1,32 @@
+version: '2.1'
+
+
+services:
+
+  ##############################################
+  # The Development Overview Container
+  #
+  # it uses the ckleinhuis/ufp-env-handlebars image to transform environment variables into a json
+  # that is feed to a handlebars renderer and is configured by default to render and host a html menu
+  #
+  #
+  development-overview:
+    mem_limit: 128m
+    image: ckleinhuis/ufp-env-handlebars:latest
+    environment:
+      - CFG_BRAND_LABEL=UFP-MIST-APPLICATION
+      - CFG_MENU_0_LABEL=UFP Swagger Diff
+      - CFG_MENU_0_LINK=http://localhost:8080/
+
+      - CFG_WELCOME_ENTRIES_0_TEXTS_0_TITLE=Ufp Swagger Diff Dev Entrypoint
+      - CFG_WELCOME_ENTRIES_0_TEXTS_0_COLOR=secondary
+      - CFG_WELCOME_ENTRIES_0_TEXTS_0_TEXT=The ufp-swagger-diff takes a folder as input and searches it for filenames containing semver versions, these will be sorted in their consecutive order and diffed the report will be printed out to a output directory containing all diffs. An additional url can be submitted which is validated agains the latest swagger in the folder and if a change is detected program exits with non zero exit code.
+
+    ports:
+      - "8080:3000"
+
+
+  start-dependencies:
+    image: dadarek/wait-for-dependencies
+    depends_on:
+      - development-overview

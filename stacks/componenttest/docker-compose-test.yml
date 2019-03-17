@@ -1,0 +1,12 @@
+version: "2.1"
+
+services:
+  start-dependencies:
+    image: ckleinhuis/ufp-robotframework:14
+    environment:
+    - "LOG_LEVEL=v"
+    - "ROBOT_OPTIONS=--include critical"
+    volumes:
+    - ./robot:/opt/robotframework/tests
+    - ./robot/report:/opt/robotframework/reports
+    shm_size: 512m

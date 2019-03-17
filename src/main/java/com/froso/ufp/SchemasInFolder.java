@@ -8,13 +8,16 @@ import org.springframework.stereotype.*;
 
 @Component
 public class SchemasInFolder {
-    final String regexp = ".*([0-9]+)\\.([0-9]+)\\.([0-9]+).*(json|yml|yaml)";
+    final String regexp = ".*(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*).*(json|yml|yaml)";
 
     private static Logger LOG = LoggerFactory
             .getLogger(SpringBootConsoleApplication.class);
 
     public String getSchemaVersion(final String a) {
+
+        LOG.info("getSchemaVersion {}", a);
         Pattern r = Pattern.compile(regexp);
+
         Matcher m1 = r.matcher(a);
         Integer aMajor = 0, aMinor = 0, aPatch = 0;
         if (m1.find()) {
@@ -24,6 +27,7 @@ public class SchemasInFolder {
         }
         return aMajor + "." + aMinor + "." + aPatch;
     }
+
 
     public Set<String> schemasInFolder(final String folder) {
 

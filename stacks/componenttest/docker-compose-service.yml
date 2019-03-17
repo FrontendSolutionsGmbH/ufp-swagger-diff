@@ -1,0 +1,21 @@
+version: '2.1'
+
+services:
+
+  ufp-swagger-diff:
+    image: frontendsolutions/ufp-swagger-diff:${VERSION}
+    environment:
+      - CFG_VALIDATE_URL=http://nginx-swagger:80/petstore-v0.1.1.json
+
+    volumes:
+      - ./petstore:/ufp-swagger-diff/input
+      - ./report:/ufp-swagger-diff/output
+    ports:
+      - "8100:8080"
+
+  start-dependencies:
+    image: dadarek/wait-for-dependencies
+    depends_on:
+      - ufp-swagger-diff
+
+

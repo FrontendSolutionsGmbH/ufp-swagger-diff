@@ -1,0 +1,15 @@
+version: '2.1'
+services:
+
+
+  nginx-swagger:
+    image: nginx
+    volumes:
+      - ./petstore:/usr/share/nginx/html
+    ports:
+      - "8081:80"
+
+  start-dependencies:
+    image: dadarek/wait-for-dependencies
+    depends_on:
+      - nginx-swagger

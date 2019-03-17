@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en" >
+    <head >
+        <meta charset="utf-8" >
+        <meta name="viewport"
+              content="width=device-width, initial-scale=1, shrink-to-fit=no" >
+        <meta name="description"
+              content="" >
+        <meta name="author"
+              content="" >
+        <link rel="icon"
+              href="../../favicon.ico" >
+
+        <title >{{title}}</title >
+        <link rel="stylesheet"
+              href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+              integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+              crossorigin="anonymous" >
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+                integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+                crossorigin="anonymous" ></script >
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+                integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+                crossorigin="anonymous" ></script >
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+                integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+                crossorigin="anonymous" ></script >
+    </head >
+
+    <body >
+        {{#*inline "HTTP_METHOD_BUTTON"}}
+
+            {{#eq method "POST"}}
+                <button class="btn btn-warn" >
+                    {{method}}
+
+                </button >
+
+            {{/eq}}
+
+            {{#eq method "DELETE"}}
+                <button class="btn btn-danger" >
+                    {{method}}
+                </button >
+            {{/eq}}
+            {{#eq method "PUT"}}
+                <button class="btn btn-warn" >
+                    {{method}}
+                </button >
+            {{/eq}}
+            {{#eq method "GET"}}
+                <button class="btn btn-success" >
+                    {{method}}
+                </button >
+            {{/eq}}
+
+            {{#eq method "PATCH"}}
+                <button class="btn btn-warn" >
+                    {{method}}
+                </button >
+            {{/eq}}
+            {{#eq method "HEAD"}}
+                <button class="btn btn-info" >
+                    {{method}}
+                </button >
+            {{/eq}}
+            {{#eq method "TRACE"}}
+                <button class="btn btn-info" >
+                    {{method}}
+                </button >
+            {{/eq}}
+            {{#eq method "CONNECT"}}
+                <button class="btn btn-info" >
+                    {{method}}
+                </button >
+            {{/eq}}
+        {{/inline}}
+        <div class="container" >
+            <div class="header clearfix" >
+
+                <nav >
+
+
+                    <ul class="nav nav-pills float-right" >
+                        <li class="nav-item" >
+                            <a class="nav-link"
+                               href="https://github.com/FrontendSolutionsGmbH/ufp-swagger-diff" >About</a >
+                        </li >
+
+                    </ul >
+                </nav >
+                <h3 class="text-muted" ><a class="navbar-brand"
+                                           href="/"
+                                           target="_top" >
+
+                </a >{{title}}</h3 >
+            </div >
+
+            <div class="jumbotron" >
+                <h1 class="display-3" >{{title}}</h1 >
+                <p class="lead" >This is the sorted list of found swagger definitions, and their swagger-diff result</p >
+
+            </div >
+
+            <div class="row marketing" >
+                <div class="col-lg-12" >
+                    <table class="table table-striped" >
+                        <thead >
+                            <tr >
+                                <td >name</td >
+                                <td >vOld</td >
+                                <td >vNew</td >
+                                <td >New</td >
+                                <td >Changed</td >
+                                <td >Missing</td >
+                                <td >Semver Diff</td >
+                                <td >Realized</td >
+                                <td >Expected</td >
+                                <td >Remarks</td >
+                                <td >View</td >
+                            </tr >
+                        </thead >
+                        <tbody >
+                            {{#each data}}
+                                <tr >
+                                    <td >{{name}}</td >
+                                    <td >{{diffMap.oldVersion}}</td >
+                                    <td >{{diffMap.newVersion}}</td >
+                                    <td >
+                                        <button class="btn btn-success" >
+                                            {{newEndpointsCount}}
+                                        </button >
+                                    </td >
+                                    <td >
+                                        <button class="btn btn-warn" >
+                                            {{changedEndpointsCount}}
+                                        </button >
+                                    </td >
+                                    <td >
+                                        <button class="btn btn-danger" >
+                                            {{missingEndpointsCount}}
+                                        </button >
+                                    </td >
+                                    <td >{{semverDiffType}}</td >
+                                    <td >{{realisedDiffTypes}}</td >
+                                    <td >{{expectedDiffTypes}}</td >
+                                    <td >{{remarks}}</td >
+                                    <td >
+                                        <a href="{{name}}.html" >html</a >
+                                        <a href="{{name}}.md" >md</a >
+                                    </td >
+
+                                </tr >
+
+                            {{/each}}
+                        </tbody >
+                    </table >
+                </div >
+
+
+            </div >
+
+            <footer class="footer" >
+                <p >&copy; Frontend Solutions GmbH 2019</p >
+            </footer >
+
+        </div > <!-- /container -->
+
+    </body >
+</html >
